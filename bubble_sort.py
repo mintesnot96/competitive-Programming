@@ -1,22 +1,14 @@
 import sys
-
-n = int(input())
-a = [int(i) for i in input().strip().split(' ')]
-numSwaps = 0
-
-for i in range(n):
-    currentSwaps = 0
-
-    for j in range(0, n - 1):
-        if a[j] > a[j + 1]:
-            a[j], a[j + 1] = a[j + 1], a[j]
-            currentSwaps += 1
-            
-    numSwaps += currentSwaps
-            
-    if currentSwaps == 0:
-        break
-        
-print("Array is sorted in " + str(numSwaps) + " swaps.")
-print("First Element: " + str(a[0]))
-print("Last Element: " + str(a[-1]))
+# https://www.hackerrank.com/challenges/ctci-bubble-sort/problem
+def countSwaps(a: list[int])->list[int]:
+    n=a
+    s=0
+    unsortedIndex=len(n)-1
+    for j in range(0,unsortedIndex):
+        for i in range(0, unsortedIndex):
+            if n[i] > n[i + 1]:
+                s=s+1
+                n[i] , n[i + 1]= n[i + 1],n[i]
+        unsortedIndex=unsortedIndex-1
+    return print('Array is sorted in',s,'swaps.'),print('First Element:',n[0]),print(f'Last Element: {n[len(n)-1]}')
+# print(countSwaps([6,4,1]))
